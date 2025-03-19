@@ -127,7 +127,7 @@ def full_chain():
     return jsonify(response), 200
 
 if __name__ == '__main__':
-    add.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
 
 
 @app.route('/transactions/new', methods=['POST'])
@@ -136,7 +136,7 @@ def new_transaction():
 
     # Check that the required fields are in the POST'ed data
     required = ['sender', 'recipient', 'amount']
-    if not all(k in values for k in reuired):
+    if not all(k in values for k in required):
         return 'Missing values', 400
     
     # Create a new Transaction
